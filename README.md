@@ -2,7 +2,8 @@
 
 ## Description
 
-This is a back end for an social media website that uses the latest technologies
+We are giving users a fast and easy way to track their money, we are also allowing them to access that information at any time, even offline. 
+The user will be able to add expenses and deposits to their budget with or without a connection. If the user enters transactions offline, the total should be updated when they're brought back online
 
 ## Table of Contents
 * [Usage](#usage)
@@ -13,16 +14,19 @@ This is a back end for an social media website that uses the latest technologies
 
 ## Usage
 
-        To Start the Server:
+        To Start the Server: if you are running on localhost
         npm start
 
+        
 ## Technologies
 
 We used Express.js API and configured it to use Mongoose to interact with a Mongo database.<br />
-We also use Moment js to get the timestamp.<br />
+To deploy this app to heroku we connect it with a Mongo Altas Cluster instance <br />
+We also proved a manifest.json which contains assets for offline viewing
 
 ### Demo
 
+deployed-app : [Heroku App](https://penny-pincher-anuj.herokuapp.com)
 
 ## Contributing
 

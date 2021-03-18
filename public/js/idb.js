@@ -44,10 +44,10 @@ function checkDatabase() {
   const transaction = db.transaction(["offlineObject"], "readwrite");
 
   // access your object store
-  const memory = transaction.objectStore("offlineObject");
+  const store = transaction.objectStore("offlineObject");
 
   // get all records from store and set to a variable
-  const getAll = memory.getAll();
+  const getAll = store.getAll();
 
   // upon a successful .getAll() execution, run this function
   getAll.onsuccess = function () {
@@ -69,9 +69,9 @@ function checkDatabase() {
           // open one more transaction
           const transaction = db.transaction(["offlineObject"], "readwrite");
           // access the offlineObject object store
-          const memory = transaction.objectStore("offlineObject");
+          const store = transaction.objectStore("offlineObject");
           // clear all items in your store
-          memory.clear();
+          store.clear();
         })
         .catch((err) => {
           console.log(err);
