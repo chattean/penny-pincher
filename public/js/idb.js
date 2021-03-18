@@ -7,8 +7,8 @@ const request = indexedDB.open("penny_pincher", 1);
 request.onupgradeneeded = function (event) {
   // save a reference to the database
   const db = event.target.result;
-  // create an object store (table) called 'pending', set it to have an auto incrementing primary key of sorts
-  db.createObjectStore("pending", { autoIncrement: true });
+  // create an object store (table) called 'offlineObject', set it to have an auto incrementing primary key of sorts
+  db.createObjectStore("offlineObject", { autoIncrement: true });
 };
 
 // upon a successful
@@ -30,10 +30,10 @@ request.onerror = function (event) {
 // This function will be executed if we attempt to submit a new transaction and there's no internet connection
 function saveRecord(record) {
   // open a new transaction with the database with read and write permissions
-  const transaction = db.transaction(["pending"], "readwrite");
+  const transaction = db.transaction(["offlineObject"], "readwrite");
 
-  // access the object store for `pending`
-  const memory = transaction.objectStore("pending");
+  // access the object store for `offlineObject`
+  const memory = transaction.objectStore("offlineObject");
 
   // add record to your store with add method
   memory.add(record);
@@ -41,10 +41,10 @@ function saveRecord(record) {
 
 function checkDatabase() {
   // open a transaction on your db
-  const transaction = db.transaction(["pending"], "readwrite");
+  const transaction = db.transaction(["offlineObject"], "readwrite");
 
   // access your object store
-  const memory = transaction.objectStore("pending");
+  const memory = transaction.objectStore("offlineObject");
 
   // get all records from store and set to a variable
   const getAll = memory.getAll();
@@ -67,9 +67,9 @@ function checkDatabase() {
             throw new Error(serverResponse);
           }
           // open one more transaction
-          const transaction = db.transaction(["pending"], "readwrite");
-          // access the pending object store
-          const memory = transaction.objectStore("pending");
+          const transaction = db.transaction(["offlineObject"], "readwrite");
+          // access the offlineObject object store
+          const memory = transaction.objectStore("offlineObject");
           // clear all items in your store
           memory.clear();
         })
