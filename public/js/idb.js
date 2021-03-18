@@ -1,7 +1,7 @@
 // create variable to hold db connection
 let db;
-// establish a connection to IndexedDB database called 'penny_pincher' and set it to version 1
-const request = indexedDB.open("penny_pincher", 1);
+// establish a connection to IndexedDB database called 'pennydb' and set it to version 1
+const request = indexedDB.open("pennydb", 1);
 
 // this event will emit if the database version changes (nonexistant to version 1, v1 to v2, etc.)
 request.onupgradeneeded = function (event) {
